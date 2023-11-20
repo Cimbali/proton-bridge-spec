@@ -121,12 +121,14 @@ cp -pf ./dist/bridge-gui.desktop "%{buildroot}%{_datadir}/applications/ch.proton
 %files
 
 %{_libexecdir}/protonmail/bridge
+%dir %{_libexecdir}/protonmail
 %{_bindir}/protonmail-bridge
 %{_libdir}/libbridgepp.so
 
 %{_datadir}/applications/ch.proton.bridge-gui.desktop
 %{_datadir}/applications/protonmail-bridge.desktop
 %{_datadir}/icons/hicolor/scalable/apps/protonmail-bridge.svg
+%dir %{_datadir}/icons/hicolor/scalable/apps
 
 # Destinations directories will be determined appropriately
 %license LICENSE
