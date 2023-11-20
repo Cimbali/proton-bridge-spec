@@ -15,8 +15,11 @@ Source1:        vendor.tar.gz
 Patch0:         0001-Rely-on-package-manager-for-dependencies-not-vcpkg.patch
 Patch1:         0002-Remove-Sentry-SDK-dependency.patch
 Patch2:         0003-Fix-install.patch
+Patch3:         0004-Do-not-download-googletest-framework.patch
+BuildRequires:  gmock
 BuildRequires:  golang >= 1.18
 BuildRequires:  grpc-devel
+BuildRequires:  gtest
 BuildRequires:  libsecret-devel
 BuildRequires:  protobuf-devel
 BuildRequires:  qt6-base-common-devel >= 6.0

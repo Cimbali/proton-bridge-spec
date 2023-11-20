@@ -9,7 +9,6 @@ Content-Transfer-Encoding: 8bit
 - Do not re-bundle all dependencies found on the system
 - Install library and executable resp. to lib and libexec
 - Ensure bridgepp library is installed
-- Skip tests to avoid downloading google tests etc.
 ---
  internal/frontend/bridge-gui/bridge-gui/CMakeLists.txt | 8 +-------
  internal/frontend/bridge-gui/bridgepp/CMakeLists.txt   | 2 ++
@@ -41,12 +40,11 @@ diff --git a/internal/frontend/bridge-gui/bridgepp/CMakeLists.txt b/internal/fro
 index f4a0a553..d5f79211 100644
 --- a/internal/frontend/bridge-gui/bridgepp/CMakeLists.txt
 +++ b/internal/frontend/bridge-gui/bridgepp/CMakeLists.txt
-@@ -164,6 +164,9 @@ target_link_libraries(bridgepp
+@@ -164,6 +164,8 @@ target_link_libraries(bridgepp
  
  target_precompile_headers(bridgepp PRIVATE Pch.h)
  
 +install(TARGETS bridgepp)
-+return()
 +
  #*****************************************************************************************************************************************************
  # GoogleTest
