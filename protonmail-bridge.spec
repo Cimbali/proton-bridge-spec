@@ -17,6 +17,7 @@ Patch1:         0002-Remove-Sentry-SDK-dependency.patch
 Patch2:         0003-Fix-install.patch
 BuildRequires:  golang >= 1.18
 BuildRequires:  grpc-devel
+BuildRequires:  libsecret-devel
 BuildRequires:  protobuf-devel
 BuildRequires:  qt6-base-common-devel >= 6.0
 BuildRequires:  qt6-base-devel >= 6.0
