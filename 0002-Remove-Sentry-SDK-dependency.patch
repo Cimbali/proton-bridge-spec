@@ -1,0 +1,96 @@
+From 95abb30a7dcc79120bb4792af9fc61f6daf703b8 Mon Sep 17 00:00:00 2001
+From: Cimbali <me@cimba.li>
+Date: Mon, 20 Nov 2023 13:35:43 +0000
+Subject: [PATCH 2/3] Remove Sentry SDK dependency
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+It’s not available in OpenSuse ecosystem
+---
+ .../bridge-gui/bridge-gui/AppController.cpp   |  1 -
+ .../bridge-gui/bridge-gui/CMakeLists.txt      |  4 +--
+ .../bridge-gui/bridge-gui/SentryUtils.h       | 25 +++++++++++++------
+ 3 files changed, 19 insertions(+), 11 deletions(-)
+
+diff --git a/internal/frontend/bridge-gui/bridge-gui/AppController.cpp b/internal/frontend/bridge-gui/bridge-gui/AppController.cpp
+index 0f1a639b..f8a9335a 100644
+--- a/internal/frontend/bridge-gui/bridge-gui/AppController.cpp
++++ b/internal/frontend/bridge-gui/bridge-gui/AppController.cpp
+@@ -25,7 +25,6 @@
+ #include <bridgepp/Exception/Exception.h>
+ #include <bridgepp/ProcessMonitor.h>
+ #include <bridgepp/Log/Log.h>
+-#include <sentry.h>
+ 
+ 
+ using namespace bridgepp;
+diff --git a/internal/frontend/bridge-gui/bridge-gui/CMakeLists.txt b/internal/frontend/bridge-gui/bridge-gui/CMakeLists.txt
+index 2c14ed83..4cc85e4a 100644
+--- a/internal/frontend/bridge-gui/bridge-gui/CMakeLists.txt
++++ b/internal/frontend/bridge-gui/bridge-gui/CMakeLists.txt
+@@ -83,7 +83,6 @@ message(STATUS "Using Qt ${Qt6_VERSION}")
+ #*****************************************************************************************************************************************************
+ # Sentry Native
+ #*****************************************************************************************************************************************************
+-find_package(sentry CONFIG REQUIRED)
+ 
+ #*****************************************************************************************************************************************************
+ # Source files and output
+@@ -118,7 +117,7 @@ add_executable(bridge-gui
+     Pch.h
+     QMLBackend.cpp QMLBackend.h
+     UserList.cpp UserList.h
+-    SentryUtils.cpp SentryUtils.h
++    SentryUtils.h
+     Settings.cpp Settings.h
+     ${DOCK_ICON_SRC_FILE} MacOS/DockIcon.h
+     )
+@@ -148,7 +147,6 @@ target_link_libraries(bridge-gui
+     Qt6::Qml
+     Qt6::QuickControls2
+     Qt6::Svg
+-    sentry::sentry
+     bridgepp
+     )
+ 
+diff --git a/internal/frontend/bridge-gui/bridge-gui/SentryUtils.h b/internal/frontend/bridge-gui/bridge-gui/SentryUtils.h
+index 7e918235..c2ef60c0 100644
+--- a/internal/frontend/bridge-gui/bridge-gui/SentryUtils.h
++++ b/internal/frontend/bridge-gui/bridge-gui/SentryUtils.h
+@@ -19,14 +19,25 @@
+ #define BRIDGE_GUI_SENTRYUTILS_H
+ 
+ 
+-#include <sentry.h>
++#include <QSysInfo>
++#include <QCryptographicHash>
++#include <bridgepp/Exception/Exception.h>
+ 
+-void initSentry();
+-QByteArray getProtectedHostname();
+-void setSentryReportScope();
+-sentry_options_t* newSentryOptions(const char * sentryDNS, const char * cacheDir);
+-sentry_uuid_t reportSentryEvent(sentry_level_t level, const char *message);
+-sentry_uuid_t reportSentryException(QString const& message, bridgepp::Exception const exception);
++typedef struct sentry_uuid_s {
++    char bytes[16];
++} sentry_uuid_t;
++
++static inline void sentry_close() {}
++
++static inline void initSentry() {}
++static inline QByteArray getProtectedHostname() {
++    QByteArray hostname = QCryptographicHash::hash(QSysInfo::machineHostName().toUtf8(), QCryptographicHash::Sha256);
++    return hostname.toBase64();
++}
++static inline sentry_uuid_t reportSentryException(QString const& message, bridgepp::Exception const exception) {
++	sentry_uuid_t nop = {0};
++	return nop;
++}
+ 
+ 
+ #endif //BRIDGE_GUI_SENTRYUTILS_H
+-- 
+2.42.1
+

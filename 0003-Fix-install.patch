@@ -1,0 +1,54 @@
+From 700b35c563a8869405b00d04dbea2e06e82194c8 Mon Sep 17 00:00:00 2001
+From: Cimbali <me@cimba.li>
+Date: Mon, 20 Nov 2023 15:02:19 +0000
+Subject: [PATCH 3/3] Fix install
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+- Do not re-bundle all dependencies found on the system
+- Install library and executable resp. to lib and libexec
+- Ensure bridgepp library is installed
+---
+ internal/frontend/bridge-gui/bridge-gui/CMakeLists.txt | 8 +-------
+ internal/frontend/bridge-gui/bridgepp/CMakeLists.txt   | 2 ++
+ 2 files changed, 3 insertions(+), 7 deletions(-)
+
+diff --git a/internal/frontend/bridge-gui/bridge-gui/CMakeLists.txt b/internal/frontend/bridge-gui/bridge-gui/CMakeLists.txt
+index 4cc85e4a..b0a61b0b 100644
+--- a/internal/frontend/bridge-gui/bridge-gui/CMakeLists.txt
++++ b/internal/frontend/bridge-gui/bridge-gui/CMakeLists.txt
+@@ -164,9 +164,8 @@ set_target_properties(bridge-gui PROPERTIES
+         MACOSX_BUNDLE TRUE)
+ 
+ install(TARGETS bridge-gui
+-        RUNTIME DESTINATION "${CMAKE_INSTALL_PREFIX}"
+-        BUNDLE DESTINATION  "${CMAKE_INSTALL_PREFIX}"
+-        LIBRARY DESTINATION "${CMAKE_INSTALL_PREFIX}"
++        RUNTIME DESTINATION "${CMAKE_INSTALL_LIBEXECDIR}/protonmail/bridge"
++        LIBRARY DESTINATION "${CMAKE_INSTALL_LIBDIR}"
+         )
+ 
+ qt_generate_deploy_app_script(
+@@ -181,5 +180,3 @@ elseif(APPLE)
+ else()
+     set(DEPLOY_OS Windows)
+ endif()
+-
+-include(Deploy${DEPLOY_OS}.cmake)
+diff --git a/internal/frontend/bridge-gui/bridgepp/CMakeLists.txt b/internal/frontend/bridge-gui/bridgepp/CMakeLists.txt
+index f4a0a553..d5f79211 100644
+--- a/internal/frontend/bridge-gui/bridgepp/CMakeLists.txt
++++ b/internal/frontend/bridge-gui/bridgepp/CMakeLists.txt
+@@ -164,6 +164,8 @@ target_link_libraries(bridgepp
+ 
+ target_precompile_headers(bridgepp PRIVATE Pch.h)
+ 
++install(TARGETS bridgepp)
++
+ #*****************************************************************************************************************************************************
+ # GoogleTest
+ #*****************************************************************************************************************************************************
+-- 
+2.42.1
+
