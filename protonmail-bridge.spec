@@ -129,6 +129,8 @@ cp -pf ./dist/bridge-gui.desktop "%{buildroot}%{_datadir}/applications/ch.proton
 %{_datadir}/applications/protonmail-bridge.desktop
 %{_datadir}/icons/hicolor/scalable/apps/protonmail-bridge.svg
 %dir %{_datadir}/icons/hicolor/scalable/apps
+%dir %{_datadir}/icons/hicolor/scalable
+%dir %{_datadir}/icons/hicolor
 
 # Destinations directories will be determined appropriately
 %license LICENSE
