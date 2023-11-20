@@ -24,6 +24,7 @@ BuildRequires:  qt6-base-devel >= 6.0
 BuildRequires:  qt6-base-private-devel >= 6.0
 BuildRequires:  qt6-qml-devel >= 6.0
 BuildRequires:  qt6-quick-devel >= 6.0
+BuildRequires:  qt6-quickcontrols2-devel >= 6.0
 BuildRequires:  qt6-svg-devel >= 6.0
 BuildRequires:  qt6-tools-devel >= 6.0
 BuildRequires:  qt6-tools-linguist >= 6.0
