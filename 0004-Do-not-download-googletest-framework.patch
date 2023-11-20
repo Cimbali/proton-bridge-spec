@@ -1,17 +1,17 @@
-From 06d7b63abcef66460a7272a684533a4fef867834 Mon Sep 17 00:00:00 2001
+From dc4bffe78a860296612b7ca78ac7b4d7e257a04c Mon Sep 17 00:00:00 2001
 From: Cimbali <me@cimba.li>
 Date: Mon, 20 Nov 2023 19:57:48 +0000
 Subject: [PATCH] Do not download googletest framework
 
 ---
- internal/frontend/bridge-gui/bridgepp/CMakeLists.txt | 8 --------
- 1 file changed, 8 deletions(-)
+ internal/frontend/bridge-gui/bridgepp/CMakeLists.txt | 9 +--------
+ 1 file changed, 1 insertion(+), 8 deletions(-)
 
 diff --git a/internal/frontend/bridge-gui/bridgepp/CMakeLists.txt b/internal/frontend/bridge-gui/bridgepp/CMakeLists.txt
-index 481ecb92..8a76dd31 100644
+index 481ecb92..a6072743 100644
 --- a/internal/frontend/bridge-gui/bridgepp/CMakeLists.txt
 +++ b/internal/frontend/bridge-gui/bridgepp/CMakeLists.txt
-@@ -175,17 +175,9 @@ if (CMAKE_VERSION VERSION_GREATER_EQUAL "3.24.0")
+@@ -175,18 +175,11 @@ if (CMAKE_VERSION VERSION_GREATER_EQUAL "3.24.0")
      cmake_policy(SET CMP0135 NEW) # avoid warning DOWNLOAD_EXTRACT_TIMESTAMP
  endif ()
  
@@ -27,8 +27,10 @@ index 481ecb92..8a76dd31 100644
 -FetchContent_MakeAvailable(googletest)
 -
  enable_testing()
++find_package(GTest REQUIRED)
  
  #*****************************************************************************************************************************************************
+ # Tests
 -- 
 2.42.1
 
