@@ -11,6 +11,7 @@ License:        GPL-3.0-only
 Group:          Productivity/Networking/Email/Utilities
 URL:            https://proton.me/mail/bridge
 Source0:        proton-bridge-3.6.1.tar.gz
+Source1:        vendor.tar.gz
 Patch0:         0001-Rely-on-package-manager-for-dependencies-not-vcpkg.patch
 Patch1:         0002-Remove-Sentry-SDK-dependency.patch
 Patch2:         0003-Fix-install.patch
@@ -63,6 +64,7 @@ Proton Mail Bridge is a desktop application that runs in the background, encrypt
 
 %prep
 %autosetup -n proton-bridge-%{version} -p1
+%setup -n proton-bridge-%{version} -T -D -a 1
 
 %build
 
@@ -72,8 +74,8 @@ Proton Mail Bridge is a desktop application that runs in the background, encrypt
 %define go_ldflags -X "%{go_constants}.FullAppName=%{summary}" -X "%{go_constants}.Version=%{version}" -X "%{go_constants}.Revision=%{revision}" -X "%{go_constants}.Tag=%{version}" -X "%{go_constants}.BuildTime=%{build_time}" -X "%{go_constants}.BuildEnv=rpmbuild"
 
 mkdir -p build
-go build -tags='' -ldflags '%{go_ldflags}' -o build/bridge ./cmd/Desktop-Bridge/
-go build -tags='' -ldflags '%{go_ldflags}' -o build/proton-bridge ./cmd/launcher/
+go build -mod=vendor -tags='' -ldflags '%{go_ldflags}' -o build/bridge ./cmd/Desktop-Bridge/
+go build -mod=vendor -tags='' -ldflags '%{go_ldflags}' -o build/proton-bridge ./cmd/launcher/
 
 # upstream distributes 2 very similar desktop files, source only has 1
 cp dist/proton-bridge.desktop dist/bridge-gui.desktop
