@@ -33,24 +33,13 @@ BuildRequires:  qt6-tools-devel >= 6.0
 BuildRequires:  qt6-tools-linguist >= 6.0
 BuildRequires:  qt6-widgets-devel
 Requires:       dejavu-sans-fonts
-Requires:       fontconfig
-Requires:       glib2
-Requires:       glibc
-Requires:       grpc
-Requires:       libEGL
 Requires:       libQt6Core6 >= 6.0
 Requires:       libQt6Qml6 >= 6.0
 Requires:       libQt6Quick6 >= 6.0
 Requires:       libQt6QuickControls2-6 >= 6.0
 Requires:       libQt6Svg6 >= 6.0
 Requires:       libQt6Widgets6 >= 6.0
-Requires:       libgcc
-Requires:       libglvnd-glx
-Requires:       libicu
 Requires:       libprotobuf.so
-Requires:       libsecret
-Requires:       libstdc++
-Requires:       libxkbcommon-x11
 Suggests:       gnome-keyring
 Suggests:       pass
 Provides:       proton-bridge
