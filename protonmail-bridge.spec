@@ -53,7 +53,7 @@ Provides:       proton-bridge
 # build.sh version: git rev-parse --short=10 HEAD
 %define revision 248fbf5e33
 
-# Tag (just use %version -- usually Version="${Tag}+git"):
+# Tag (just use version macro -- usually Version="${Tag}+git"):
 # Makefile version: ./utils/get_revision.sh tag
 # build.sh version: git describe --tags || echo 'NOTAG'
 %define build_time %(date "+%{FT}%{T}%{z}")
