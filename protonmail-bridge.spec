@@ -32,7 +32,7 @@ BuildRequires:  qt6-svg-devel >= 6.0
 BuildRequires:  qt6-tools-devel >= 6.0
 BuildRequires:  qt6-tools-linguist >= 6.0
 BuildRequires:  qt6-widgets-devel
-Requires:       dejavu-sans-fonts
+Requires:       dejavu-fonts
 Requires:       libQt6Core6 >= 6.0
 Requires:       libQt6Qml6 >= 6.0
 Requires:       libQt6Quick6 >= 6.0
