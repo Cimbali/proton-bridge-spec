@@ -92,7 +92,7 @@ jobs:
 
       - name: Try running binary
         run: |
-          protonmail-bridge status
+          protonmail-bridge --cli <<<exit
 
       - name: Push to OpenBuildService
         run: |
