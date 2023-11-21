@@ -39,7 +39,6 @@ Requires:       libQt6Quick6 >= 6.0
 Requires:       libQt6QuickControls2-6 >= 6.0
 Requires:       libQt6Svg6 >= 6.0
 Requires:       libQt6Widgets6 >= 6.0
-Requires:       libprotobuf.so
 Suggests:       gnome-keyring
 Suggests:       pass
 Provides:       proton-bridge
