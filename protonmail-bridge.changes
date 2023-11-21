@@ -1,0 +1,7 @@
+-------------------------------------------------------------------
+Mon 20 Nov 17:44:21 UTC 2023 - me@cimba.li
+
+-   Update v3.6.1
+    *   Re-implement/patch most of build system to use system
+		dependencies and install to correct locations.
+
