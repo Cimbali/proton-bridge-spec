@@ -1,7 +1,7 @@
-From 95abb30a7dcc79120bb4792af9fc61f6daf703b8 Mon Sep 17 00:00:00 2001
+From dc67107aa23c9654edcc78809cc75f1ca194223a Mon Sep 17 00:00:00 2001
 From: Cimbali <me@cimba.li>
 Date: Mon, 20 Nov 2023 13:35:43 +0000
-Subject: [PATCH 2/3] Remove Sentry SDK dependency
+Subject: [PATCH 2/4] Remove Sentry SDK dependency
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit

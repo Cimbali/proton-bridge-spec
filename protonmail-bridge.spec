@@ -12,10 +12,10 @@ Group:          Productivity/Networking/Email/Utilities
 URL:            https://proton.me/mail/bridge
 Source0:        proton-bridge-3.6.1.tar.gz
 Source1:        vendor.tar.gz
-Patch0:         0001-Rely-on-package-manager-for-dependencies-not-vcpkg.patch
-Patch1:         0002-Remove-Sentry-SDK-dependency.patch
-Patch2:         0003-Fix-install.patch
-Patch3:         0004-Do-not-download-googletest-framework.patch
+Patch1:         0001-Rely-on-package-manager-for-dependencies-not-vcpkg.patch
+Patch2:         0002-Remove-Sentry-SDK-dependency.patch
+Patch3:         0003-Fix-install-locations.patch
+Patch4:         0004-Allow-to-look-for-installed-googletest-framework.patch
 BuildRequires:  gmock
 BuildRequires:  golang >= 1.18
 BuildRequires:  grpc-devel

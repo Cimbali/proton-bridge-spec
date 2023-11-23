@@ -1,0 +1,39 @@
+From 25180895410c4fabb612114082cd32d063712c5d Mon Sep 17 00:00:00 2001
+From: Cimbali <me@cimba.li>
+Date: Mon, 20 Nov 2023 15:02:19 +0000
+Subject: [PATCH 3/4] Fix install locations
+
+- Do not re-bundle all dependencies found on the system
+- Install library and executable resp. to lib and libexec
+- Ensure bridgepp library is installed
+---
+ internal/frontend/bridge-gui/bridge-gui/CMakeLists.txt | 9 +++------
+ 1 file changed, 3 insertions(+), 6 deletions(-)
+
+diff --git a/internal/frontend/bridge-gui/bridge-gui/CMakeLists.txt b/internal/frontend/bridge-gui/bridge-gui/CMakeLists.txt
+index 4cc85e4a..45f73f22 100644
+--- a/internal/frontend/bridge-gui/bridge-gui/CMakeLists.txt
++++ b/internal/frontend/bridge-gui/bridge-gui/CMakeLists.txt
+@@ -163,10 +163,9 @@ set_target_properties(bridge-gui PROPERTIES
+         WIN32_EXECUTABLE TRUE
+         MACOSX_BUNDLE TRUE)
+ 
+-install(TARGETS bridge-gui
+-        RUNTIME DESTINATION "${CMAKE_INSTALL_PREFIX}"
+-        BUNDLE DESTINATION  "${CMAKE_INSTALL_PREFIX}"
+-        LIBRARY DESTINATION "${CMAKE_INSTALL_PREFIX}"
++install(TARGETS bridge-gui bridgepp
++        RUNTIME DESTINATION "${CMAKE_INSTALL_LIBEXECDIR}/protonmail/bridge"
++        LIBRARY DESTINATION "${CMAKE_INSTALL_LIBDIR}"
+         )
+ 
+ qt_generate_deploy_app_script(
+@@ -181,5 +180,3 @@ elseif(APPLE)
+ else()
+     set(DEPLOY_OS Windows)
+ endif()
+-
+-include(Deploy${DEPLOY_OS}.cmake)
+-- 
+2.42.1
+

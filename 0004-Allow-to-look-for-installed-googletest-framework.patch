@@ -1,0 +1,43 @@
+From 52fd54332c7cebda9565d5c38bd8bcda75570798 Mon Sep 17 00:00:00 2001
+From: Cimbali <me@cimba.li>
+Date: Mon, 20 Nov 2023 19:57:48 +0000
+Subject: [PATCH 4/4] Allow to look for installed googletest framework
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+Requires renaming to proper dependency name and adding FIND_PACKAGE_ARGS
+argument
+
+This allows to avoid downloading on offline build systems.
+Also don’t include googletest framework in install bundle (!)
+---
+ internal/frontend/bridge-gui/bridgepp/CMakeLists.txt | 6 ++++--
+ 1 file changed, 4 insertions(+), 2 deletions(-)
+
+diff --git a/internal/frontend/bridge-gui/bridgepp/CMakeLists.txt b/internal/frontend/bridge-gui/bridgepp/CMakeLists.txt
+index f4a0a553..018b2ca5 100644
+--- a/internal/frontend/bridge-gui/bridgepp/CMakeLists.txt
++++ b/internal/frontend/bridge-gui/bridgepp/CMakeLists.txt
+@@ -174,14 +174,16 @@ endif ()
+ 
+ include(FetchContent)
+ FetchContent_Declare(
+-    googletest
++    GTest
+     URL https://github.com/google/googletest/archive/b796f7d44681514f58a683a3a71ff17c94edb0c1.zip
++    FIND_PACKAGE_ARGS
+ )
+ 
+ # For Windows: Prevent overriding the parent project's compiler/linker settings
+ set(gtest_force_shared_crt ON CACHE BOOL "" FORCE)
++set(INSTALL_GTEST OFF)
+ 
+-FetchContent_MakeAvailable(googletest)
++FetchContent_MakeAvailable(GTest)
+ 
+ enable_testing()
+ 
+-- 
+2.42.1
+
