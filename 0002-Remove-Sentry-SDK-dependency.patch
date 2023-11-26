@@ -1,4 +1,4 @@
-From dc67107aa23c9654edcc78809cc75f1ca194223a Mon Sep 17 00:00:00 2001
+From fdf830cd2a563b68c5572193bf319e360e702043 Mon Sep 17 00:00:00 2001
 From: Cimbali <me@cimba.li>
 Date: Mon, 20 Nov 2023 13:35:43 +0000
 Subject: [PATCH 2/4] Remove Sentry SDK dependency
@@ -6,7 +6,12 @@ MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
 
-It’s not available in OpenSuse ecosystem
+1. It’s not available in OpenSuse ecosystem, so it’s a hassle to keep.
+   (would likely require vendoring the library, compiling statically, and
+   adjusting bridge build process to find and use it).
+
+2. The sentry key is not distributed as part of the bridge source code,
+   which means that the reporting is disabled regardless of the library.
 ---
  .../bridge-gui/bridge-gui/AppController.cpp   |  1 -
  .../bridge-gui/bridge-gui/CMakeLists.txt      |  4 +--
