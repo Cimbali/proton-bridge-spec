@@ -23,7 +23,8 @@ set -e
 mkdir -p "$build/"
 
 # Fetch/get tag
-if (( $# )); then
+# -f = fetch? force? Anyways, get the latest from online and update local files accordingly
+if [[ "$1" != "-f" ]] && (( $# )); then
 	tag=$1
 
 	if [[ "$tag" =~ ^v[0-9]+(\.[0-9]+){2}$ ]]; then
@@ -49,9 +50,10 @@ sha=`jq -r "map(select(.name == \"$tag\"))[0].commit.sha[:10]" "$build/tags.json
 
 if (( $# )); then
 	echo "Setting revision to $sha in spec file"
-	sed -i "s/^%define revision [0-9a-f]*\$/%define revision $sha/" "$spec"
-elif ! grep -q "^%define revision $sha\$" "$spec"; then
+	sed -i "s/^\\(Version:\\s*\\)\\S*/\\1${tag#v}/;s/^\\(Source0:\\s*\\)\\S*/\\1${archive}/;s/^%define revision [0-9a-f]*\$/%define revision $sha/" "$spec"
+elif ! grep -q "^Version:\\s*${tag#v}\\$" "$spec" || ! grep -q "^%define revision $sha\\$" "$spec"; then
 	echo "Revision and tag in do not match in $spec: expected $sha for $tag"
+	echo "To update from latest found online version, run: $0 -f"
 	exit 1
 else
 	echo "Revision and tag match in $spec"
@@ -59,6 +61,8 @@ fi
 
 if [ ! -f "$build/$archive" ]; then
 	curl -L "https://github.com/$repo/archive/refs/tags/${tag}.tar.gz" -o "$build/$archive"
+fi
+if [ ! -f "$build/vendor.tar.gz" ] || [ "$build/$archive" -nt "$build/vendor.tar.gz" ]; then
 	cd "$build"
 	# can’t handle abs archive paths
 	/usr/lib/obs/service/go_modules --archive "$archive" --outdir "$build"
@@ -75,9 +79,9 @@ fi
 # Prepend version item to changelog
 echo "- Update to version $tag"
 # Also prepend pandoc-wrapped (for list awareness) body of github release
-jq -r 'map(select(.prerelease | not))[0].body' "$build/$releases" | sed -r \
-	-e 's/^[-*]/  &/;s/\r$//;/What.s New|Full Changelog|Downloads at/d;/New Contributors/,/^$/d' \
-	-e 's,(#|https://github.com/mozilla-mobile/mozilla-vpn-client/pull/)([0-9]+),gh#\2,'
+jq -r "map(select(.tag_name == \"$tag\"))[0].body" "$build/$releases" | sed -r \
+	-e 's/^[-*]/  &/;s/\r$//;/^#+ (Added|Changed|Fixed)/d;/^$/d' \
+	-e "s,(#|https://github.com/$repo/pull/)([0-9]+),gh#\\2,"
 ) | pandoc --from=markdown --to=markdown --columns=70 |
 	sed -r 's/^ {8}/    /;s/^- {3}/- /;s/^ {4}- {3}/  * /;$a\\' |
 	sed -i '0r/dev/stdin' "$changes"
