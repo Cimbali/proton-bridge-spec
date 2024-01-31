@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed Jan 31 18:08:34 UTC 2024 - Cimbali <me@cimba.li>
+
+- Update to version v3.8.1
+  * GODT-3121: Suggest relevant KB articles in the in-app bug report
+    form.
+  * GODT-2001: Add govulncheck to scan for vulnerabilities.
+  * Keep nighlty-job log as artifact.
+  * Test: Improve TestMetadata_JobCorrectlyFinishesAfterCancel.
+  * GODT-3153: Do not take into account full address when hasing
+    messages.
+
+-------------------------------------------------------------------
 Wed Jan 10 09:55:39 UTC 2024 - Cimbali <me@cimba.li>
 
 - Update to version v3.7.1
