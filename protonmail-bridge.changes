@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sun Apr  7 09:29:24 UTC 2024 - Cimbali <me@cimba.li>
+
+- Update to version v3.10.0
+  * GODT-3199: Add package log field.
+  * GODT-3220: Add more test scenarios.
+  * GODT-3193: Preserve attachment encoding.
+  * GODT-3214: Encrypt only with primary key.
+  * GODT-2662: Use tart runner for darwin jobs.
+  * GODT-1602: Test: run integration tests against black 🖤.
+  * GODT-3257: Test: quad9 provider test not working on CI.
+  * GODT-3290: Fix test failing because of leap day.
+
+-------------------------------------------------------------------
 Wed Feb 28 12:51:02 UTC 2024 - Cimbali <me@cimba.li>
 
 - Update to version v3.9.1
