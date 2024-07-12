@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Fri Jul 12 22:38:49 UTC 2024 - Cimbali <me@cimba.li>
+
+- Update to version v3.12.0 null
+  * BRIDGE-75: Bridge repair button.
+  * BRIDGE-79: Add New Outlook for Mac KB disclaimer.
+  * BRIDGE-16: Bump version Go 1.21.9 Qt 6.4.3.
+  * BRIDGE-23: Update gluon to go 1.21.
+  * BRIDGE-22: Update gpa to go 1.21.
+  * BRIDGE-90: Disable repair button when bridge cannot connect
+    to proton servers; bump GPA.
+  * BRIDGE-69: Explicitly handle semver panic for last bridge
+    version from vault.
+  * BRIDGE-29: Bump gluon version.
+  * BRIDGE-49: Configure gitleaks baseline and grype config.
+  * BRIDGE-21: Missing panic handling.
+  * BRIDGE-17: Broken telemetry heartbeat test.
+  * BRIDGE-10: Bumped gluon version.
+
+-------------------------------------------------------------------
 Wed Jun 12 09:27:05 UTC 2024 - Cimbali <me@cimba.li>
 
 - Update to version v3.11.1
