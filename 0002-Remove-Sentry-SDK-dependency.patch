@@ -49,12 +49,12 @@ index 2c14ed83..4cc85e4a 100644
 -    SentryUtils.cpp SentryUtils.h
 +    SentryUtils.h
      Settings.cpp Settings.h
+     ClipboardProxy.cpp ClipboardProxy.h
      ${DOCK_ICON_SRC_FILE} MacOS/DockIcon.h
-     )
-@@ -148,7 +147,6 @@ target_link_libraries(bridge-gui
-     Qt6::Qml
+@@ -150,7 +149,6 @@ target_link_libraries(bridge-gui
      Qt6::QuickControls2
      Qt6::Svg
+     Qt6::Gui
 -    sentry::sentry
      bridgepp
      )
