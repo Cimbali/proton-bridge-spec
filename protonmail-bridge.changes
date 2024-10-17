@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Thu Oct 17 17:38:03 UTC 2024 - Cimbali <me@cimba.li>
+
+- Update to version v3.14.0
+  * BRIDGE-207: Failure to download or verify an update now fails
+    silently.
+  * BRIDGE-204: Removed redundant Sentry events.
+  * BRIDGE-150: Observability service modification.
+  * BRIDGE-210: Reduced log level of cache events so they won't be
+    printed to stdout.
+  * BRIDGE-106: Fixed import of multipart-related messages.
+  * BRIDGE-108: Fixed GetInitials when empty username is passed.
+
+-------------------------------------------------------------------
 Mon Sep 16 09:16:24 UTC 2024 - Cimbali <me@cimba.li>
 
 - Update to version v3.13.0
