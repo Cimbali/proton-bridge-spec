@@ -34,6 +34,10 @@ BuildRequires:  qt6-svg-devel >= 6.0
 BuildRequires:  qt6-tools-devel >= 6.0
 BuildRequires:  qt6-tools-linguist >= 6.0
 BuildRequires:  qt6-widgets-devel
+%if 0%{?suse_version} && 0%{?is_opensuse} && 0%{?suse_version} < 1600
+BuildRequires:  gcc12
+BuildRequires:  gcc12-c++
+%endif
 Requires:       dejavu-fonts
 Requires:       libQt6Core6 >= 6.0
 Requires:       libQt6Qml6 >= 6.0
@@ -75,6 +79,10 @@ go build -mod=vendor -tags='' -ldflags '%{go_ldflags}' -o build/proton-bridge ./
 # upstream distributes 2 very similar desktop files, source only has 1
 cp dist/proton-bridge.desktop dist/bridge-gui.desktop
 echo NoDisplay=true >> dist/bridge-gui.desktop
+
+%if 0%{?suse_version} && 0%{?is_opensuse} && 0%{?suse_version} < 1600
+export CC=gcc-12 CXX=g++-12
+%endif
 
 %define __sourcedir internal/frontend/bridge-gui/bridge-gui
 %cmake  \
