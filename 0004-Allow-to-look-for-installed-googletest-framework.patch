@@ -19,24 +19,18 @@ diff --git a/internal/frontend/bridge-gui/bridgepp/CMakeLists.txt b/internal/fro
 index f4a0a553..018b2ca5 100644
 --- a/internal/frontend/bridge-gui/bridgepp/CMakeLists.txt
 +++ b/internal/frontend/bridge-gui/bridgepp/CMakeLists.txt
-@@ -174,14 +174,16 @@ endif ()
- 
- include(FetchContent)
+@@ -176,10 +176,12 @@ endif ()
  FetchContent_Declare(
--    googletest
-+    GTest
+     googletest
      URL https://github.com/google/googletest/archive/b796f7d44681514f58a683a3a71ff17c94edb0c1.zip
-+    FIND_PACKAGE_ARGS
++    FIND_PACKAGE_ARGS GTest
  )
  
  # For Windows: Prevent overriding the parent project's compiler/linker settings
  set(gtest_force_shared_crt ON CACHE BOOL "" FORCE)
 +set(INSTALL_GTEST OFF)
  
--FetchContent_MakeAvailable(googletest)
-+FetchContent_MakeAvailable(GTest)
- 
- enable_testing()
+ FetchContent_MakeAvailable(googletest)
  
 -- 
 2.42.1
