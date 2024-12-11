@@ -16,8 +16,6 @@ Patch1:         0001-Rely-on-package-manager-for-dependencies-not-vcpkg.patch
 Patch2:         0002-Remove-Sentry-SDK-dependency.patch
 Patch3:         0003-Fix-install-locations.patch
 Patch4:         0004-Allow-to-look-for-installed-googletest-framework.patch
-Patch5:         0005-Fix-ColorImage-Qt-crash.patch
-Patch6:         0006-Avoid-name-clash-with-6.8-introduced-popupType.patch
 BuildRequires:  gmock
 BuildRequires:  golang >= 1.21
 BuildRequires:  grpc-devel
