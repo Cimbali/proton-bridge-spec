@@ -23,7 +23,7 @@ index f4a0a553..018b2ca5 100644
  FetchContent_Declare(
      googletest
      URL https://github.com/google/googletest/archive/b796f7d44681514f58a683a3a71ff17c94edb0c1.zip
-+    FIND_PACKAGE_ARGS GTest
++    FIND_PACKAGE_ARGS NAMES GTest
  )
  
  # For Windows: Prevent overriding the parent project's compiler/linker settings
