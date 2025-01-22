@@ -69,7 +69,7 @@ jobs:
       - name: Build binary RPM
         id: rpm
         run: |
-          zypper install -y --allow-downgrade `rpm -qR "${{ steps.srpm.outputs.filename }}"`
+          zypper install -y --allow-downgrade --allow-vendor-change `rpm -qR "${{ steps.srpm.outputs.filename }}"`
           rpmbuild -D "_topdir $PWD/rpmbuild" -D "_rpmdir $PWD" -rb "${{ steps.srpm.outputs.filename }}"
 
           filename=`rpm -q --qf "%{arch}/%{name}-%{version}-%{release}.%{arch}.rpm" --specfile osc/protonmail-bridge.spec`
