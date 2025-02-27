@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Feb 27 12:35:21 UTC 2025 - Cimbali <me@cimba.li>
+
+- Update to version v3.18.0
+  * BRIDGE-309: Revised update logic and structure.
+  * BRIDGE-154: Added access token to expiry refresh request.
+
+-------------------------------------------------------------------
 Thu Jan 30 15:17:08 UTC 2025 - Cimbali <me@cimba.li>
 
 - Update to version v3.17.0
