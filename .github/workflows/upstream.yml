@@ -15,7 +15,7 @@ jobs:
           zypper install -y jq unzip git rpm-build rpmlint osc spec-cleaner obs-service-go_modules
 
       - name: Checkout repo
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
         with:
           path: git
 
@@ -80,7 +80,7 @@ jobs:
         continue-on-error: true
 
       - name: Archive production artifacts
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           path: |
             ${{ steps.srpm.outputs.filename }}
