@@ -1,8 +1,13 @@
 -------------------------------------------------------------------
-Tue May  6 17:01:33 UTC 2025 - Cimbali <me@cimba.li>
+Thu May 29 17:40:53 UTC 2025 - Cimbali <me@cimba.li>
+
+- Update to version v3.20.1
+  - BRIDGE-362: Implemented logic for reconciling label conflicts.
+
+-------------------------------------------------------------------
+Thu May 29 17:39:55 UTC 2025 - Cimbali <me@cimba.li>
 
 - Update to version v3.20.0
-  - BRIDGE-348: Enable display of BYOE addresses in Bridge.
   - BRIDGE-340: Added additional logging for label operations and
     related bad events.
   - BRIDGE-324: Log a hash of the vault key on Bridge start.
