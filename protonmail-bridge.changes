@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Jun 27 23:11:37 UTC 2025 - Cimbali <me@cimba.li>
+
+- Update to version v3.21.1
+  - BRIDGE-383: Extended internal mailbox conflict resolution logic
+    and minor changes to the mailbox conflict pre-checker.
+
+-------------------------------------------------------------------
 Wed Jun 11 12:50:12 UTC 2025 - Cimbali <me@cimba.li>
 
 - Update to version v3.21.0
