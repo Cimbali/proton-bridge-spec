@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Jul 23 20:53:01 UTC 2025 - Cimbali <me@cimba.li>
+
+- Update to version v3.21.2
+  - BRIDGE-406: Fixed faulty certificate chain validation logic. Made
+    certificate pin checks exclusive to leaf certificates.
+
+-------------------------------------------------------------------
 Fri Jun 27 23:11:37 UTC 2025 - Cimbali <me@cimba.li>
 
 - Update to version v3.21.1
