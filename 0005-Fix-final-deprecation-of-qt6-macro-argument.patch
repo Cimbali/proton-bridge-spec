@@ -1,0 +1,25 @@
+From 9de08b2478921f47c028f5fcd34166c462b188b2 Mon Sep 17 00:00:00 2001
+From: Cimbali <me@cimba.li>
+Date: Thu, 29 Jan 2026 09:03:07 +0100
+Subject: [PATCH] Fix final deprecation of qt6 macro argument
+
+---
+ internal/frontend/bridge-gui/bridge-gui/CMakeLists.txt | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/internal/frontend/bridge-gui/bridge-gui/CMakeLists.txt b/internal/frontend/bridge-gui/bridge-gui/CMakeLists.txt
+index 69efdf4f..378dec43 100644
+--- a/internal/frontend/bridge-gui/bridge-gui/CMakeLists.txt
++++ b/internal/frontend/bridge-gui/bridge-gui/CMakeLists.txt
+@@ -177,7 +177,7 @@ install(TARGETS bridge-gui bridgepp
+ 
+ qt_generate_deploy_app_script(
+         TARGET bridge-gui
+-        FILENAME_VARIABLE deploy_script
++        OUTPUT_SCRIPT deploy_script
+         NO_UNSUPPORTED_PLATFORM_ERROR)
+ 
+ if(UNIX AND NOT APPLE)
+-- 
+2.51.0
+

@@ -4,18 +4,19 @@
 
 
 Name:           protonmail-bridge
-Version:        3.21.2
+Version:        3.22.0
 Release:        1
 Summary:        Proton Mail Bridge
 License:        GPL-3.0-only
 Group:          Productivity/Networking/Email/Utilities
 URL:            https://proton.me/mail/bridge
-Source0:        proton-bridge-3.21.2.tar.gz
+Source0:        proton-bridge-3.22.0.tar.gz
 Source1:        vendor.tar.gz
 Patch1:         0001-Rely-on-package-manager-for-dependencies-not-vcpkg.patch
 Patch2:         0002-Remove-Sentry-SDK-dependency.patch
 Patch3:         0003-Fix-install-locations.patch
 Patch4:         0004-Allow-to-look-for-installed-googletest-framework.patch
+Patch5:         0005-Fix-final-deprecation-of-qt6-macro-argument.patch
 BuildRequires:  gmock
 BuildRequires:  golang >= 1.21
 BuildRequires:  grpc-devel
@@ -32,6 +33,7 @@ BuildRequires:  qt6-svg-devel >= 6.0
 BuildRequires:  qt6-tools-devel >= 6.0
 BuildRequires:  qt6-tools-linguist >= 6.0
 BuildRequires:  qt6-widgets-devel
+BuildRequires:  libfido2-devel
 %if 0%{?suse_version} && 0%{?is_opensuse} && 0%{?suse_version} < 1600
 BuildRequires:  gcc12
 BuildRequires:  gcc12-c++
@@ -43,18 +45,20 @@ Requires:       libQt6Quick6 >= 6.0
 Requires:       libQt6QuickControls2-6 >= 6.0
 Requires:       libQt6Svg6 >= 6.0
 Requires:       libQt6Widgets6 >= 6.0
+Requires:       libfido2-1
 Suggests:       gnome-keyring
 Suggests:       pass
 Provides:       proton-bridge
 
 # Makefile version: ./utils/get_revision.sh
 # build.sh version: git rev-parse --short=10 HEAD
-%define revision 4cc2ded001
+%define revision 87bba395d0
 
 # Tag (just use version macro -- usually Version="${Tag}+git"):
 # Makefile version: ./utils/get_revision.sh tag
 # build.sh version: git describe --tags || echo 'NOTAG'
-%define build_time %(date "+%{FT}%{T}%{z}")
+
+%define build_time %(date "+%FT%T%z")
 
 %description
 Proton Mail Bridge is a desktop application that runs in the background, encrypting and decrypting messages as they enter and leave your computer.

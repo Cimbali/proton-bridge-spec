@@ -8,13 +8,13 @@ Subject: [PATCH 1/4] Rely on package manager for dependencies, not vcpkg
  1 file changed, 10 deletions(-)
 
 diff --git a/internal/frontend/bridge-gui/BridgeSetup.cmake b/internal/frontend/bridge-gui/BridgeSetup.cmake
-index 7c6c634c..a6471667 100644
+index c50b97c9..5c9f84f4 100644
 --- a/internal/frontend/bridge-gui/BridgeSetup.cmake
 +++ b/internal/frontend/bridge-gui/BridgeSetup.cmake
-@@ -53,14 +53,6 @@ endif()
- 
- set(VCPKG_ROOT "${BRIDGE_REPO_ROOT}/extern/vcpkg")
+@@ -58,15 +58,6 @@ else()
+ endif()
  message(STATUS "VCPKG_ROOT is ${VCPKG_ROOT}")
+ 
 -if (WIN32)
 -    find_program(VCPKG_EXE "${VCPKG_ROOT}/vcpkg.exe")
 -else()
@@ -23,16 +23,14 @@ index 7c6c634c..a6471667 100644
 -if (NOT VCPKG_EXE)
 -    message(FATAL_ERROR "vcpkg is not installed. Run build.sh (macOS/Linux) or build.ps1 (Windows) first.")
 -endif()
- 
+-
  # For now we support only a single architecture for macOS (ARM64 or x86_64). We need to investigate how to build universal binaries with vcpkg.
  if (APPLE)
-@@ -86,5 +78,3 @@ if  (WIN32)
+     if (NOT DEFINED CMAKE_OSX_ARCHITECTURES)
+@@ -91,5 +82,3 @@ if  (WIN32)
      message(STATUS "Building for Intel x64 Windows computers")
      set(VCPKG_TARGET_TRIPLET x64-windows)
  endif()
 -
 -set(CMAKE_TOOLCHAIN_FILE "${VCPKG_ROOT}/scripts/buildsystems/vcpkg.cmake" CACHE STRING "toolchain")
 \ No newline at end of file
--- 
-2.42.1
-
