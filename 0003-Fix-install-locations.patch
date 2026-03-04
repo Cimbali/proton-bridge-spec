@@ -11,11 +11,11 @@ Subject: [PATCH 3/4] Fix install locations
  1 file changed, 3 insertions(+), 6 deletions(-)
 
 diff --git a/internal/frontend/bridge-gui/bridge-gui/CMakeLists.txt b/internal/frontend/bridge-gui/bridge-gui/CMakeLists.txt
-index 4cc85e4a..45f73f22 100644
+index b0543180..1723e8f4 100644
 --- a/internal/frontend/bridge-gui/bridge-gui/CMakeLists.txt
 +++ b/internal/frontend/bridge-gui/bridge-gui/CMakeLists.txt
-@@ -163,10 +163,9 @@ set_target_properties(bridge-gui PROPERTIES
-         WIN32_EXECUTABLE TRUE
+@@ -170,10 +170,9 @@ set_target_properties(bridge-gui PROPERTIES
+         WIN32_EXECUTABLE TRUE #this needs to be FALSE in order for standard output to work on windows
          MACOSX_BUNDLE TRUE)
  
 -install(TARGETS bridge-gui
@@ -28,7 +28,7 @@ index 4cc85e4a..45f73f22 100644
          )
  
  qt_generate_deploy_app_script(
-@@ -181,5 +180,3 @@ elseif(APPLE)
+@@ -188,5 +187,3 @@ elseif(APPLE)
  else()
      set(DEPLOY_OS Windows)
  endif()
