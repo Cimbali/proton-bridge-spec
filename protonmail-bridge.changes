@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Mar 26 07:17:17 UTC 2026 - Cimbali <me@cimba.li>
+
+- Update to version v3.23.1
+  - BRIDGE-488: Restore previous RemoveFromMailbox behavior (< 3.23.0).
+    Drafts moved to trash should not be perma-deleted.
+
+-------------------------------------------------------------------
 Wed Mar  4 18:36:09 UTC 2026 - Cimbali <me@cimba.li>
 
 - Update to version v3.23.0
