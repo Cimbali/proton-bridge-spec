@@ -4,13 +4,13 @@
 
 
 Name:           protonmail-bridge
-Version:        3.24.2
+Version:        3.25.0
 Release:        1
 Summary:        Proton Mail Bridge
 License:        GPL-3.0-only
 Group:          Productivity/Networking/Email/Utilities
 URL:            https://proton.me/mail/bridge
-Source0:        proton-bridge-3.24.2.tar.gz
+Source0:        proton-bridge-3.25.0.tar.gz
 Source1:        vendor.tar.gz
 Patch1:         0001-Rely-on-package-manager-for-dependencies-not-vcpkg.patch
 Patch2:         0002-Remove-Sentry-SDK-dependency.patch
@@ -52,7 +52,7 @@ Provides:       proton-bridge
 
 # Makefile version: ./utils/get_revision.sh
 # build.sh version: git rev-parse --short=10 HEAD
-%define revision d9cf2b9d49
+%define revision f1f599e971
 
 # Tag (just use version macro -- usually Version="${Tag}+git"):
 # Makefile version: ./utils/get_revision.sh tag
