@@ -24,6 +24,7 @@ mkdir -p "$build/"
 
 # Fetch/get tag
 # -f = fetch? force? Anyways, get the latest from online and update local files accordingly
+"${curl[@]}" "https://api.github.com/repos/$repo/releases" -o "$build/$releases"
 if [[ "$1" != "-f" ]] && (( $# )); then
 	tag=$1
 
@@ -34,8 +35,8 @@ if [[ "$1" != "-f" ]] && (( $# )); then
 		exit 1
 	fi
 else
-	"${curl[@]}" "https://api.github.com/repos/$repo/releases" -o "$build/$releases"
-	tag=`jq -r 'map(select(.prerelease | not))[0].tag_name' "$build/$releases"`
+	# map(select(.prerelease | not))
+	tag=`jq -r '.[0].tag_name' "$build/$releases"`
 	echo Latest tag fetched: $tag
 fi
 
